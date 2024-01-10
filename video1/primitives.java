@@ -15,7 +15,7 @@ public class primitives {
     //     double largedecimalnumbers = 6458354.66555;
     //     long largeinteger = 67676655454L;
     //     boolean check = false;
-    
+         input.next
         } 
     
 }
