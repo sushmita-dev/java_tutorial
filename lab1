@@ -1,79 +1,55 @@
-// Restaurant Class
-public class Restaurant {
-    private String name;
-    private String location;
-    private int numberOfSeats;
-    private double rating;
-    private double revenue;
-    private int numberOfCustomers;
+// MenuItem class representing a menu item in a restaurant
+class MenuItem {
+    // Properties
+    private String itemName;
+    private double itemPrice;
 
-    // Constructor
-    public Restaurant(String name, String location, int numberOfSeats, double rating, double revenue, int numberOfCustomers) {
-        this.name = name;
-        this.location = location;
-        this.numberOfSeats = numberOfSeats;
-        this.rating = rating;
-        this.revenue = revenue;
-        this.numberOfCustomers = numberOfCustomers;
+    // Method to display details of a menu item
+    public void displayItemDetails() {
+        System.out.println("Item Name: " + itemName);
+        System.out.println("Item Price: $" + itemPrice);
     }
 
-    // Method to calculate average cost per person
-    public double calculateAvgCostPerPerson() {
-        if (numberOfCustomers != 0) {
-            return revenue / numberOfCustomers;
-        } else {
-            return 0;
+    // Method to calculate the tax on a menu item (assuming a 10% tax rate)
+    public double calculateTax() {
+        return 0.1 * itemPrice;
+    }
+}
+
+// Restaurant class representing a restaurant
+public class Restaurant {
+    // Properties
+    private String restaurantName;
+    private String cuisineType;
+    private MenuItem specialDish;
+
+    // Method to display restaurant details
+    public void displayRestaurantDetails() {
+        System.out.println("Restaurant Name: " + restaurantName);
+        System.out.println("Cuisine Type: " + cuisineType);
+        if (specialDish != null) {
+            System.out.println("Special Dish: ");
+            specialDish.displayItemDetails();
         }
     }
 
-    // Getter and Setter methods
-    // (You can generate these automatically in most IDEs)
-
-    // Other methods, if required...
-}
-
-// MenuItem Class
-public class MenuItem {
-    private String itemName;
-    private String description;
-    private double price;
-
-    // Constructor
-    public MenuItem(String itemName, String description, double price) {
-        this.itemName = itemName;
-        this.description = description;
-        this.price = price;
-    }
-
-    // Method to calculate sales tax for the menu item (Assuming 5% sales tax)
-    public double calculateSalesTax() {
-        return 0.05 * price;
-    }
-
-    // Getter and Setter methods
-    // (You can generate these automatically in most IDEs)
-
-    // Other methods, if required...
-}
-
-// Main Class
-public class lab1 {
+    // Main method
     public static void main(String[] args) {
-        // Create a Restaurant object
-        Restaurant restaurant = new Restaurant("Tasty Bites", "123 Main St", 50, 4.5, 10000.0, 500);
+        // Create an instance of MenuItem
+        MenuItem menuItem = new MenuItem();
+        menuItem.itemName = "Spaghetti Carbonara";
+        menuItem.itemPrice = 12.99;
 
-        // Display properties and methods of the Restaurant
-        System.out.println("Restaurant Name: " + restaurant.getName());
-        System.out.println("Location: " + restaurant.getLocation());
-        System.out.println("Average Cost Per Person: $" + restaurant.calculateAvgCostPerPerson());
+        // Create an instance of Restaurant
+        Restaurant restaurant = new Restaurant();
+        restaurant.restaurantName = "Pasta Palace";
+        restaurant.cuisineType = "Italian";
+        restaurant.specialDish = menuItem;
 
-        // Create a MenuItem object
-        MenuItem menuItem = new MenuItem("Chicken Tikka", "Grilled chicken with spices", 15.99);
+        // Display restaurant details
+        restaurant.displayRestaurantDetails();
 
-        // Display properties and methods of the MenuItem
-        System.out.println("\nMenu Item Name: " + menuItem.getItemName());
-        System.out.println("Description: " + menuItem.getDescription());
-        System.out.println("Price: $" + menuItem.getPrice());
-        System.out.println("Sales Tax: $" + menuItem.calculateSalesTax());
+        // Calculate and display tax on the special dish
+        System.out.println("Tax on special dish: $" + menuItem.calculateTax());
     }
 }
