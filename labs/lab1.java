@@ -2,56 +2,79 @@ package labs;
 
 // Main class - is of restaurant
 public class lab1 {
-    
     public static void main(String[] args) {
-        //Creating instance of MenuItem class by calling constructor MenuItem.
-        MenuItem menuItem1 = new MenuItem("Pizza", 12.99, 800);
-        MenuItem menuItem2 = new MenuItem("Burger", 8.50, 600);
+        MenuItem menuItem1 = new MenuItem("Pizza", 12.99, 800, "Main Course", false, true, true);
+        MenuItem menuItem2 = new MenuItem("Burger", 8.50, 600, "Main Course", true, false, true);
         
-        //Printing separate properties of the instance/object by calling methods
-        System.out.println("Menu Item 1: " + menuItem1.getName() + ", Price: $" + menuItem1.getPrice() + ", Calories: " + menuItem1.getCalories());
-        System.out.println("Menu Item 2: " + menuItem2.getName() + ", Price: $" + menuItem2.getPrice() + ", Calories: " + menuItem2.getCalories());
+        displayMenuItemDetails(menuItem1);
+        displayMenuItemDetails(menuItem2);
         
         double totalCalories = menuItem1.getCalories() + menuItem2.getCalories();
-        System.out.println("Total Calories in both items: " + totalCalories);
+        System.out.println("\nTotal Calories in both items: " + totalCalories);
+
+        double totalPrice = menuItem1.getPrice() + menuItem2.getPrice();
+        System.out.println("\nTotal Price of both items: " + totalPrice);
+    }
+    
+    public static void displayMenuItemDetails(MenuItem item) {
+        System.out.println("\nName: " + item.getName());
+        System.out.println("Price: Rs" + item.getPrice());
+        System.out.println("Calories: " + item.getCalories());
+        System.out.println("Category: " + item.getCategory());
+        System.out.println("Is Vegetarian: " + item.isVegetarian());
+        System.out.println("Is Spicy: " + item.isSpicy());
+        System.out.println("Is Available: " + item.isAvailable());
     }
 }
 
 // MenuItem class
-class MenuItem {
-    //Properties
-    String name;
-    double price;
-    int calories;
-    String category;
-    boolean isVegetarian;
-    boolean isSpicy;
-    boolean isAvailable;
+     class MenuItem {
+     String name;
+     double price;
+     int calories;
+     String category;
+     boolean isVegetarian;
+     boolean isSpicy;
+     boolean isAvailable;
 
-    //Constructor - Parametarized
-    public MenuItem(String name, double price, int calories) {
-        //initializing the object
+    public MenuItem(String name, double price, int calories, String category, boolean isVegetarian, boolean isSpicy, boolean isAvailable) {
         this.name = name;
         this.price = price;
         this.calories = calories;
-        this.category = "Main Course";
-        this.isVegetarian = false;
-        this.isSpicy = false;
-        this.isAvailable = true;
+        this.category = category;
+        this.isVegetarian = isVegetarian;
+        this.isSpicy = isSpicy;
+        this.isAvailable = isAvailable;
     }
 
-    // Method 1
     public String getName() {
         return name;
     }
 
-    // Method 2
     public double getPrice() {
         return price;
     }
 
-    // Method 3
     public int getCalories() {
         return calories;
     }
+
+    public String getCategory() {
+        return category;
+    }
+
+    public boolean isVegetarian() {
+        return isVegetarian;
+    }
+
+    public boolean isSpicy() {
+        return isSpicy;
+    }
+
+    public boolean isAvailable() {
+        return isAvailable;
+    }
 }
+
+    
+   
