@@ -2,18 +2,17 @@ import java.util.Calendar;
 import java.util.Scanner;
 
 public class Book {
-    private int bookId;
-    private String title;
-    private String author;
-    private String isbn;
-    private int yearOfPublication;
-    private double price;
-    private int quantity;
-    private double amount;
+    int bookId;
+    String title;
+    String author;
+    String isbn;
+    int yearOfPublication;
+    double price;
+    int quantity;
+    double amount;
 
     // Default constructor
     public Book() {
-        this.title = "Java Programming"; // Default title
     }
 
     // Constructor accepting author, ISBN, and year of publication
@@ -26,9 +25,8 @@ public class Book {
     }
 
     // Constructor accepting price and quantity, calculates amount
-    public Book(int bookId, double price, int quantity) {
+    public Book(double price, int quantity, double amount) {
         this(); // Call default constructor
-        this.bookId = bookId;
         this.price = price;
         this.quantity = quantity;
         this.amount = price * quantity;
@@ -102,9 +100,10 @@ public class Book {
 
         // Create Book object for Book 1
         Book book1 = new Book(bookId, author, isbn, yearOfPublication);
-        book1.setTitle(title);
-        book1.setPrice(price);
-        book1.setQuantity(quantity);
+        book1.title = title;
+        book1.price = price;
+        book1.quantity = quantity;
+        book1.amount = price * quantity;
 
         // Display book details for Book 1
         System.out.println("\nDisplaying details of the first book:");
@@ -112,6 +111,8 @@ public class Book {
 
         // Getting input from the user for Book 2
         System.out.println("\nEnter details for the second book:");
+
+        scanner.nextLine();
 
         // Getting input from the user for Book ID
         while (true) {
@@ -150,12 +151,11 @@ public class Book {
 
         // Create Book object for Book 2
         Book book2 = new Book(bookId, author, isbn, yearOfPublication);
-        book2.setTitle(title);
-        book2.setPrice(price);
-        book2.setQuantity(quantity);
+        book2.title = title;
+        book2.price = price;
+        book2.quantity = quantity;
+        book2.amount = price * quantity;
 
-
-        
         System.out.println("\nDisplaying details of the first book:");
         book1.displayBook();
         // Display book details for Book 2
@@ -163,71 +163,5 @@ public class Book {
         book2.displayBook();
 
         scanner.close();
-    }
-
-    // Getters and setters
-    public int getBookId() {
-        return bookId;
-    }
-
-    public void setBookId(int bookId) {
-        this.bookId = bookId;
-    }
-
-    public String getTitle() {
-        return title;
-    }
-
-    public void setTitle(String title) {
-        this.title = title;
-    }
-
-    public String getAuthor() {
-        return author;
-    }
-
-    public void setAuthor(String author) {
-        this.author = author;
-    }
-
-    public String getIsbn() {
-        return isbn;
-    }
-
-    public void setIsbn(String isbn) {
-        this.isbn = isbn;
-    }
-
-    public int getYearOfPublication() {
-        return yearOfPublication;
-    }
-
-    public void setYearOfPublication(int yearOfPublication) {
-        this.yearOfPublication = yearOfPublication;
-    }
-
-    public double getPrice() {
-        return price;
-    }
-
-    public void setPrice(double price) {
-        this.price = price;
-    }
-
-    public int getQuantity() {
-        return quantity;
-    }
-
-    public void setQuantity(int quantity) {
-        this.quantity = quantity;
-        this.amount = price * quantity; // Recalculate amount when quantity is set
-    }
-
-    public double getAmount() {
-        return amount;
-    }
-
-    public void setAmount(double amount) {
-        this.amount = amount;
     }
 }
